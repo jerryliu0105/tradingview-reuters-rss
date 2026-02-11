@@ -1,5 +1,8 @@
 name: Generate RSS
 
+permissions:
+  contents: write   # ← 必须有这一行
+
 on:
   schedule:
     - cron: "*/10 * * * *"
@@ -18,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 feedgen lxml
+          pip install requests feedgen
 
       - name: Generate RSS
         run: python generate.py
